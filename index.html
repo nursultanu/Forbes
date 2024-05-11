@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #newsContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .news {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .news h2 {
+            color: #333;
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        .news p {
+            color: #666;
+        }
+
+        .news img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>8 богатейших людей мира — 2024. Рейтинг Forbes</h1>
+    </header>
+    <main id="newsContainer">
+        <script>
+            const newsContainer = document.getElementById('newsContainer');
+
+            // Массив с новостями
+            const newsData = [
+                {
+                    title: '№1 Бернар Арно и семья',
+                    description: 'Состояние: $233 млрд Источник состояния: LVMH Возраст: 75 Страна: Франция',
+                    image: 'https://cdn.forbes.ru/forbes-static/c/1304x734/new/2024/03/0-2024-02-27T000000Z-1324924790-MT1ABCPR888469048-RTRMADP-3-ABACA-PRESS-66012e54a8138.webp',
+                    url: 'news1.html'
+                },
+                {
+                    title: '№2 Илон Маск',
+                    description: 'Состояние: $195 млрд Источник состояния: Tesla, SpaceX Возраст: 52 Страна: США...',
+                    image: 'https://cdn.forbes.ru/forbes-static/c/978x653/new/2024/03/2-Elon-Musk-66012a84e05e2.webp',
+                    url: 'news2.html'
+                },
+                {
+                    title: '№3 Джефф Безос',
+                    description: 'Состояние: $194 млрд Источник состояния: Amazon.com Возраст: 60 Страна: США...',
+                    image: 'https://cdn.forbes.ru/forbes-static/c/978x653/new/2024/03/3-Bez-66012a8818d3e.webp',
+                    url: 'news3.html'
+                },
+                {
+                    title: '№4 Марк Цукерберг',
+                    description: 'Состояние: $177 млрд Источник состояния: Meta (признана в России экстремистской и запрещена) Возраст: 39 Страна: США...',
+                    image: 'https://cdn.forbes.ru/forbes-static/c/978x653/new/2024/03/GettyImages-2019207157-copy-65fd9a67ec30b.webp',
+                    url: 'news4.html'
+                },
+                {
+                    title: '№5 Ларри Эллисон',
+                    description: 'Состояние: $141 млрд Источник состояния: Oracle Возраст: 79 Страна: США...',
+                    image: 'https://cdn.forbes.ru/forbes-static/c/978x653/new/2024/03/GettyImages-1052778924-copy-65fd9b79a8134.webp',
+                    url: 'news5.html'
+                },
+                {
+                    title: '№6 Уоррен Баффет',
+                    description: 'Состояние: $133 млрд Источник состояния: Berkshire Hathaway Возраст: 93 Страна: США. Больше новостей на сайте!',
+                    image: 'https://cdn.forbes.ru/forbes-static/c/978x653/new/2024/03/6-WarrenB-660129f4b4715.webp',
+                    url: 'news6.html'
+                },
+                {
+                    title: '№7 Билл Гейтс',
+                    description: 'Состояние: $128 млрд Источник состояния: Microsoft, инвестиции Возраст: 68 Страна: США. Новости, которые вас заинтересуют!',
+                    image: 'https://cdn.forbes.ru/forbes-static/c/978x653/new/2024/03/7-TASS-62134495-66012e5a1c397.webp',
+                    url: 'news7.html'
+                },
+                {
+                    title: '№8 Стив Балмер',
+                    description: 'Состояние: $121 млрд Источник состояния: Microsoft Возраст: 67 Страна: США',
+                    image: 'https://cdn.forbes.ru/forbes-static/c/978x653/new/2024/03/8-Steve-Ballmer-66012e6fd9d10.webp',
+                    url: 'news8.html'
+                }
+            ];// Функция для создания HTML элементов новостей
+            function createNewsElement(newsItem) {
+                const article = document.createElement('article');
+                article.classList.add('news');
+
+                const title = document.createElement('h2');
+                title.textContent = newsItem.title;
+
+                const image = document.createElement('img');
+                image.src = newsItem.image;
+                image.alt = newsItem.title;
+
+                const description = document.createElement('p');
+                description.textContent = newsItem.description;
+
+                const readMoreLink = document.createElement('a');
+                readMoreLink.textContent = 'Читать далее';
+                readMoreLink.href = newsItem.url;
+                readMoreLink.target = '_blank'; // Открывать ссылку в новой вкладке
+
+                article.appendChild(title);
+                article.appendChild(image);
+                article.appendChild(description);
+                article.appendChild(readMoreLink);
+
+                return article;
+            }
+
+            // Заполнение контейнера с новостями
+            newsData.forEach(newsItem => {
+                const newsElement = createNewsElement(newsItem);
+                newsContainer.appendChild(newsElement);
+            });
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2024 Forbes</p>
+    </footer>
+</body>
+</html>
